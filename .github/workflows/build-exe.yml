@@ -39,4 +39,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: python-exe
-          path: dist/chrome_grab.exe
+          path: dist/n.exe
